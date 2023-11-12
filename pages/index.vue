@@ -53,6 +53,8 @@ export default{
       const response = await $fetch('/api/v1/gen', {method: 'post', body:{content: this.chat}})
       if (response.ok) {
         this.chat.push(response.result.choices[0].message)
+      } else {
+        alert('شما در هر ساعت می‌تونید ۲۰ درخواست به دنیس ارسال کنید.')
       }
     },
 
