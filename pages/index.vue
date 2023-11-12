@@ -26,9 +26,9 @@
       </div>
       <div class="p-4 flex">
         <input v-model="prompt" type="text" class="border p-4 block w-full border-gray-400 rounded focus:border-black transition-all outline-none" placeholder="enter your prompt here" @keydown="sendViaEnter">
-        <button class="p-4 ml-2 border rounded bg-indigo-500 border-indigo-800" @click="sendPrompt">
-          send
-        </button>
+        <ibutton :iclass="`p-4 ml-2 rounded bg-indigo-500 shadow-lg shadow-indigo-500/50`" :act="sendPrompt">
+          Send
+        </ibutton>
       </div>
     </div>
   </div>
@@ -44,17 +44,21 @@ export default{
 
   methods: {
     async sendPrompt() {
-      if (this.prompt == '') {
-        alert('please fill the prompt');
-        return;
-      }
-      this.chat.push({ role: "user", content: this.prompt });
-      this.prompt = ''
-      const response = await $fetch('/api/v1/gen', {method: 'post', body:{content: this.chat}})
-      if (response.ok) {
-        this.chat.push(response.result.choices[0].message)
-      } else {
-        alert('شما در هر ساعت می‌تونید ۲۰ درخواست به دنیس ارسال کنید.')
+      try {
+        if (this.prompt == '') {
+          alert('please fill the prompt');
+          return;
+        }
+        this.chat.push({ role: "user", content: this.prompt });
+        this.prompt = ''
+        const response = await $fetch('/api/v1/gen', {method: 'post', body:{content: this.chat}})
+        if (response.ok) {
+          this.chat.push(response.result.choices[0].message)
+        } else {
+          alert("you can send 20 prompt every hour")
+        }
+      } catch (error) {
+        alert("a problem occured, please try again later")
       }
     },
 
