@@ -46,7 +46,10 @@ export default{
   methods: {
     async sendPrompt() {
       try {
-        if (this.waiting) return
+        if (this.waiting) {
+          alert('please wait for previous request to complete')
+          return
+        }
         if (this.prompt == '') {
           alert('please fill the prompt');
           return;
