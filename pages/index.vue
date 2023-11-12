@@ -66,11 +66,13 @@ export default{
 }
 </script>
 <style>
-code{
-    @apply bg-gray-200 p-1 rounded mx-1
+code {
+  direction: ltr;
+  @apply bg-gray-200 p-1 rounded mx-1
 }
 pre code {
-    @apply block bg-slate-800 text-gray-100 my-2 p-3 rounded
+  direction: rtl;
+  @apply block bg-slate-800 text-gray-100 my-2 p-3 rounded
 }
 ul {
   list-style: disc;
