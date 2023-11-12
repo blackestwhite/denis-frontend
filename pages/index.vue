@@ -38,17 +38,20 @@ export default{
   data() {
     return {
       prompt: '',
-      chat: []
+      chat: [],
+      waiting: false,
     }
   },
 
   methods: {
     async sendPrompt() {
       try {
+        if (this.waiting) return
         if (this.prompt == '') {
           alert('please fill the prompt');
           return;
         }
+        this.waiting = true
         this.chat.push({ role: "user", content: this.prompt });
         this.prompt = ''
         const response = await $fetch('/api/v1/gen', {method: 'post', body:{content: this.chat}})
@@ -59,6 +62,8 @@ export default{
         }
       } catch (error) {
         alert("a problem occured, please try again later")
+      } finally {
+        this.waiting = false
       }
     },
 
