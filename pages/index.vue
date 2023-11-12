@@ -12,7 +12,7 @@
         </p>
         <p>for remote jobs/projects, contact me, <a href="mailto:pesaregoal@gmail.com" class="text-blue-600">pesaregoal@gmail.com</a></p>
       </div>
-      <div class="grow space-y-2 p-4 overflow-y-scroll">
+      <div class="grow space-y-2 p-4 overflow-y-scroll" id="chat">
           <div v-for="msg in chat">
               
               <MDC
@@ -70,6 +70,27 @@ export default{
 }
 </script>
 <style>
+::-webkit-scrollbar {
+  width: 8px;
+  border-radius: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+
+}
 code {
   direction: ltr;
   @apply bg-gray-200 p-1 rounded mx-1
