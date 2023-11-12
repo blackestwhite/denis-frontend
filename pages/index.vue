@@ -96,7 +96,7 @@ code {
   @apply bg-gray-200 p-1 rounded mx-1
 }
 pre code {
-  direction: rtl;
+  direction: ltr;
   @apply block bg-slate-800 text-gray-100 my-2 p-3 rounded
 }
 ul {
