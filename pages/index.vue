@@ -26,7 +26,7 @@
       </div>
       <div class="p-4 flex">
         <input v-model="prompt" type="text" class="border p-4 block w-full border-gray-400 rounded focus:border-black transition-all outline-none" placeholder="enter your prompt here" @keydown="sendViaEnter">
-        <ibutton :iclass="`p-4 ml-2 rounded bg-indigo-500 shadow-lg shadow-indigo-500/50`" :act="sendPrompt">
+        <ibutton id="ibutton" :iclass="`p-4 ml-2 rounded bg-indigo-500 shadow-lg shadow-indigo-500/50`" :act="sendPrompt">
           Send
         </ibutton>
       </div>
@@ -64,7 +64,7 @@ export default{
 
     sendViaEnter(e) {
       if (e.code != "Enter") return
-      this.sendPrompt()
+      document.getElementById('ibutton').click()
     }
   }
 }
