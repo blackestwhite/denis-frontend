@@ -6,7 +6,7 @@
       </div>
     </aside> -->
     <div class="flex flex-col container mx-auto h-full">
-      <div class="p-4 border-b">
+      <div class="py-4 mb-4 border-b">
         <p>
           this is an experimental project built by
           <a href="https://github.com/blackestwhite" class="text-blue-600 bg-blue-600/10 p-1">
@@ -34,7 +34,7 @@
               
           </div>
       </div>
-      <div class="p-4 flex">
+      <div class="py-4 flex">
         <input v-model="prompt" type="text" class="border p-4 block w-full border-gray-400 rounded focus:border-black transition-all outline-none" placeholder="enter your prompt here" @keydown="sendViaEnter">
         <ibutton id="ibutton" :iclass="`p-4 ml-2 rounded bg-indigo-500 shadow-lg shadow-indigo-500/50`" :act="sendPrompt">
           Send
