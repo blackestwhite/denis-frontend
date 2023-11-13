@@ -6,7 +6,7 @@
       </div>
     </aside> -->
     <div class="flex flex-col container mx-auto h-full">
-      <div class="py-4 mb-4 border-b">
+      <div class="p-4 mb-4 border-b md:px-0">
         <div class="bg-gray-100 p-4 rounded-2xl">
           <div class="w-14 h-14 rounded-full bg-black/10 flex items-center justify-center">
             <IconCSS name="mdi:info" class="text-2xl"/>
@@ -35,7 +35,7 @@
               
           </div>
       </div>
-      <div class="py-4 flex">
+      <div class="p-4 flex md:px-0">
         <input v-model="prompt" type="text" class="border p-4 block w-full border-gray-400 rounded-xl focus:border-black transition-all outline-none" placeholder="enter your prompt here" @keydown="sendViaEnter">
         <ibutton id="ibutton" :iclass="`p-4 ml-2 rounded-xl bg-slate-500 shadow-lg shadow-slate-500/50 text-white`" :act="sendPrompt">
           Send
