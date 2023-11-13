@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     },
   },
   modules: [
-    '@nuxtjs/mdc'
+    '@nuxtjs/mdc',
+    'nuxt-icon'
   ],
 })

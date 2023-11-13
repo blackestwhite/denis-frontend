@@ -8,9 +8,19 @@
     <div class="flex flex-col container mx-auto h-full">
       <div class="p-4 border-b">
         <p>
-          this is an experimental project built by <a href="https://github.com/blackestwhite" class="text-blue-600">Mahdi Akbari</a>
+          this is an experimental project built by
+          <a href="https://github.com/blackestwhite" class="text-blue-600 bg-blue-600/10 p-1">
+            <IconCSS name="mdi:github" class="mb-1"/>
+            Mahdi Akbari
+          </a>
         </p>
-        <p>for remote jobs/projects, contact me, <a href="mailto:pesaregoal@gmail.com" class="text-blue-600">pesaregoal@gmail.com</a></p>
+        <p class="mt-2">
+          for remote jobs/projects, contact me,
+          <a href="mailto:pesaregoal@gmail.com" class="text-blue-600 bg-blue-600/10 p-1">
+            <IconCSS name="mdi:email" class="mb-1"/>
+            pesaregoal@gmail.com
+          </a>
+        </p>
       </div>
       <div class="grow space-y-2 p-4 overflow-y-scroll" id="chat">
           <div v-for="msg in chat">
