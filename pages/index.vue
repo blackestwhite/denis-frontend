@@ -105,7 +105,7 @@ code {
 }
 pre code {
   direction: ltr;
-  @apply block bg-slate-800 text-gray-100 my-2 p-3 rounded
+  @apply block bg-slate-800 text-gray-100 my-2 p-3 rounded overflow-x-scroll
 }
 ul {
   list-style: disc;
