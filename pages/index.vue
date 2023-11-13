@@ -7,20 +7,21 @@
     </aside> -->
     <div class="flex flex-col container mx-auto h-full">
       <div class="py-4 mb-4 border-b">
-        <p>
-          this is an experimental project built by
-          <a href="https://github.com/blackestwhite" class="text-blue-600 bg-blue-600/10 p-1">
-            <IconCSS name="mdi:github" class="mb-1"/>
-            Mahdi Akbari
-          </a>
-        </p>
-        <p class="mt-2">
-          for remote jobs/projects, contact me,
-          <a href="mailto:pesaregoal@gmail.com" class="text-blue-600 bg-blue-600/10 p-1">
-            <IconCSS name="mdi:email" class="mb-1"/>
-            pesaregoal@gmail.com
-          </a>
-        </p>
+        <div class="bg-gray-100 p-4 rounded-2xl">
+          <div class="w-14 h-14 rounded-full bg-black/10 flex items-center justify-center">
+            <IconCSS name="mdi:info" class="text-2xl"/>
+          </div>
+          <p class="mt-4">
+            Denis is an AI chat bot, powered by OpenAI for programming purposes.
+          </p>
+          <p class="mt-2">
+            built by
+            <a href="https://github.com/blackestwhite" target="_blank" class="text-blue-600">
+              <IconCSS name="mdi:github" class="mb-1"/>
+              Mahdi Akbari
+            </a>
+          </p>
+        </div>
       </div>
       <div class="grow space-y-2 p-4 overflow-y-scroll" id="chat">
           <div v-for="msg in chat">
@@ -29,14 +30,14 @@
               :value="msg.content"
               id="mdc"
               :class="{'bg-blue-100':msg.role=='user', 'border': msg.role=='assistant'}"
-              class="p-3 rounded border"
+              class="p-3 rounded-xl border"
               />
               
           </div>
       </div>
       <div class="py-4 flex">
-        <input v-model="prompt" type="text" class="border p-4 block w-full border-gray-400 rounded focus:border-black transition-all outline-none" placeholder="enter your prompt here" @keydown="sendViaEnter">
-        <ibutton id="ibutton" :iclass="`p-4 ml-2 rounded bg-indigo-500 shadow-lg shadow-indigo-500/50`" :act="sendPrompt">
+        <input v-model="prompt" type="text" class="border p-4 block w-full border-gray-400 rounded-xl focus:border-black transition-all outline-none" placeholder="enter your prompt here" @keydown="sendViaEnter">
+        <ibutton id="ibutton" :iclass="`p-4 ml-2 rounded-xl bg-slate-500 shadow-lg shadow-slate-500/50 text-white`" :act="sendPrompt">
           Send
         </ibutton>
       </div>
