@@ -26,14 +26,19 @@
       <div class="grow space-y-2 p-4 overflow-y-scroll" id="chat">
           <div v-for="msg in chat">
               
-              <MDC
-              :value="msg.content"
-              id="mdc"
-              :class="{'bg-blue-100':msg.role=='user', 'border': msg.role=='assistant'}"
-              class="p-3 rounded-xl border"
-              />
+            <MDC
+            :value="msg.content"
+            :class="{'bg-blue-100':msg.role=='user', 'border': msg.role=='assistant'}"
+            class="mdc p-3 rounded-xl border"
+            />
               
           </div>
+          <MDC
+            v-if="completion!=''"
+            :value="completion"
+            id="mdc"
+            class="mdc p-3 rounded-xl border"
+          />
       </div>
       <div class="p-4 flex md:px-0">
         <input v-model="prompt" type="text" class="border p-4 block w-full border-gray-400 rounded-xl focus:border-black transition-all outline-none" placeholder="enter your prompt here" @keydown="sendViaEnter">
@@ -51,33 +56,49 @@ export default{
       prompt: '',
       chat: [],
       waiting: false,
+      completion: '',
     }
   },
 
   methods: {
     async sendPrompt() {
-      try {
-        if (this.waiting) {
-          alert('please wait for previous request to complete')
-          return
-        }
-        if (this.prompt == '') {
-          alert('please fill the prompt');
-          return;
-        }
-        this.waiting = true
-        this.chat.push({ role: "user", content: this.prompt });
-        this.prompt = ''
-        const response = await $fetch('/api/v1/gen', {method: 'post', body:{content: this.chat}})
-        if (response.ok) {
-          this.chat.push(response.result.choices[0].message)
-        } else {
-          alert("you can send 20 prompt every hour")
-        }
-      } catch (error) {
-        alert("a problem occured, please try again later")
-      } finally {
-        this.waiting = false
+      if (this.waiting) {
+        alert('please wait for previous request to complete')
+        return
+      }
+      if (this.prompt == '') {
+        alert('please fill the prompt');
+        return;
+      }
+      this.waiting = true
+      this.chat.push({ role: "user", content: this.prompt });
+      this.prompt = ''
+      const response = await $fetch('/api/v1/gen', {method: 'post', body:{content: this.chat}})
+      if (response.ok) {
+        const eventSource = new EventSource(`/api/v1/get/${response.result.id}`)
+        eventSource.onmessage = (event) => {
+          // Handle incoming events and update your UI
+          console.log(event.data);
+          var obj = {}
+          if (event.data == "[DONE]") {
+            this.chat.push({
+              role: 'assistant',
+              content: this.completion
+            })
+            this.completion = ''
+            this.waiting = false
+            return
+          }
+          obj = JSON.parse(event.data)
+          
+          if (obj.choices[0].finish_reason == "stop") return
+          let content = obj.choices[0].delta.content
+          if (content != "" || content != undefined) {
+            this.completion += content
+          }
+        };
+      } else {
+        alert("you can send 20 prompt every hour")
       }
     },
 
