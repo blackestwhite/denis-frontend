@@ -11,15 +11,16 @@
           <div class="w-14 h-14 rounded-full bg-black/10 flex items-center justify-center">
             <IconCSS name="mdi:info" class="text-2xl"/>
           </div>
-          <p class="mt-4">
+          <p class="mt-4 text-sm">
             Denis is an AI chat bot, powered by OpenAI for programming purposes.
           </p>
-          <p class="mt-2">
+          <p class="mt-2 text-sm">
             built by
             <a href="https://github.com/blackestwhite" target="_blank" class="text-blue-600">
               <IconCSS name="mdi:github" class="mb-1"/>
               Mahdi Akbari
             </a>
+            , For remote projects/jobs or reserving ads on this website, contact me
           </p>
         </div>
       </div>
