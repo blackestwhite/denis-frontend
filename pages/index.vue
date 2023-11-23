@@ -42,7 +42,7 @@
           />
       </div>
       <div class="p-4 flex md:px-0">
-        <input v-model="prompt" type="text" class="border p-4 block w-full border-gray-400 rounded-xl focus:border-black transition-all outline-none" placeholder="enter your prompt here" @keydown="sendViaEnter">
+        <input v-model="prompt" type="text" class="border p-4 block w-full border-gray-400 rounded-xl focus:border-black transition-all outline-none" placeholder="Enter your request here" @keydown="sendViaEnter">
         <ibutton id="ibutton" :iclass="`p-4 ml-2 rounded-xl bg-slate-500 shadow-lg shadow-slate-500/50 text-white`" :act="sendPrompt">
           Send
         </ibutton>
